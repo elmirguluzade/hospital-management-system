@@ -1,0 +1,88 @@
+<style>
+    /* Common table and form styles */
+    td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    #logout {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        border: none;
+        margin: 20px 0;
+    }
+
+    button {
+        font-size: 18px;
+    }
+
+    #add {
+        margin-top: 10px;
+    }
+
+    #search {
+        margin-top: 100px;
+    }
+
+    #searchTable td {
+        padding: 5px;
+    }
+
+    /* Specific Reservation table style */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    form {
+        margin-top: 10px;
+    }
+
+    input[type="submit"] {
+        padding: 5px;
+        margin: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+
+<!--Reservation-->
+<h2>{{title1}}</h2>
+
+<table>
+    <tr>
+        <td>Reservation Number</td>
+        <td>Reservation Date</td>
+        <td>Department</td>
+        <td>Patient</td>
+    </tr>
+    <form method="post">
+    {{#each Reservation}}
+    <tr>
+        <td>{{reserv_num}}</td> 
+        <td>{{reserv_date}}</td> 
+        <td>{{department_name}}</td> 
+        <td>{{patient_id}}</td>
+        <td><input type="submit" value="Delete" formaction="/enter/edit/delete/{{reserv_num}}/doctor"></td>
+    </tr>
+    {{/each}}
+    </form>
+</table>
+
+<form method="get" id="add">
+    <input type="submit" value="Add reservation" formaction="/enter/edit/insert/doctor">
+</form>
+
+<form id="logout" method="get" action='/logout'>
+        <button class='btn' type="submit">Logout</button>
+</form>

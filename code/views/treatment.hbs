@@ -1,0 +1,127 @@
+<style>
+    td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    #logout {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        border: none;
+        margin: 20px 0;
+    }
+
+    button {
+        font-size: 18px;
+    }
+
+    #add {
+        margin-top: 10px;
+    }
+
+    #search {
+        margin-top: 100px;
+    }
+
+    #searchTable td {
+        padding: 5px;
+    }
+
+    /* Specific Treatment table and form style */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    form {
+        margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="submit"] {
+        padding: 5px;
+        margin: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+
+
+<h2>{{title1}}</h2>
+
+<table>
+    <tr>
+        <td>Treatment Date</td>
+        <td>Treatment Details</td>
+        <td>Nurse</td>
+        <td>Patient</td>
+    </tr>
+        {{#each Treatment}}
+    <form method="post">
+        <tr>
+            <td><input type="text" name="details" value="{{treatment_details}}"></td> 
+            <td><input type="text" name="date" value="{{treatment_date}}"></td> 
+            <td style="display: none;"><input type="text" name="oldDate" value="{{treatment_date}}"></td> 
+            <td>{{nurse_id}}</td> 
+            <td>{{patient_id}}</td>
+            <td><input type="submit" value="Modify" formaction="/enter/edit/modify/nurse"></td>
+            <td><input type="submit" value="Delete" formaction="/enter/edit/delete/{{treatment_date}}/nurse"></td>
+        </tr>
+    </form>
+    {{/each}}
+</table>
+
+<form method="get" id="add">
+    <input type="submit" value="Add treatment" formaction="/enter/edit/insert/nurse">
+</form>
+
+<form method="post" id="search">
+    <input type="text" placeholder="Patient Name" name="name">
+    <input type="submit" value="Search" formaction="/enter/edit/search/treatment">
+</form>
+
+{{#each patient}}
+<table border="1" id="searchTable">
+   <tr>
+    <td>Patient Id</td>
+    <td>Name</td> 
+    <td>Social Secuirty Number</td> 
+    <td>Gender</td> 
+    <td>Address</td>
+    <td>Blood Type</td>
+    <td>Height</td>
+    <td>Weight</td>
+    <td>Phone Number</td>
+    <td>Password</td>
+    </tr>
+    <tr>
+    <td>{{patient_id}}</td>
+    <td>{{name}}</td> 
+    <td>{{social_security_number}}</td> 
+    <td>{{gender}}</td> 
+    <td>{{address}}</td>
+    <td>{{blood_type}}</td>
+    <td>{{height}}</td>
+    <td>{{weight}}</td>
+    <td>{{phone_number}}</td>
+    <td>{{password}}</td>
+    </tr>
+</table>
+{{/each}}
+
+<form id="logout" method="get" action='/logout'>
+        <button class='btn' type="submit">Logout</button>
+</form>

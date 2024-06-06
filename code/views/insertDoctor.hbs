@@ -1,0 +1,75 @@
+<style>
+    form {
+        width: 285px;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+    }
+
+    div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    label {
+        width: 30%;
+        text-align: right;
+        margin-right: 10px;
+    }
+
+    input[type="text"],
+    select {
+        width: 60%;
+        height: 25px;
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+    #btn {
+        width: 100%;
+        margin-top: 15px;
+        padding: 8px;
+        border: none;
+        border-radius: 3px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+    #btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+
+<h1>Doctor</h1>
+    <form method="post" >
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" placeholder="Name" id="name" required> 
+        </div>
+        <div>
+            <label for="address">Address:</label>
+            <input type="text" name="address" placeholder="Address" id="address" required> 
+        </div>
+        <div>
+            <label for="phoneNumber">Number:</label>
+            <input type="text" name="phone_number" placeholder="Phone Number" id="phoneNumber" required> 
+        </div>
+        <div>
+            <label for="Password">Password:</label>
+            <input type="text" name="password" placeholder="Password" id="Password" required>
+        </div>
+        <div>
+            <label for="department">Department:</label>
+            <select name="department" id="department">
+            {{#each departments}}
+                <option value="{{department_id}}">{{department_id}} - {{department_name}}</option>
+            {{/each}}
+            </select>
+        </div>
+        <input type="submit" formaction="/enter/edit/insert/doctor" id="btn">
+    </form>

@@ -1,0 +1,122 @@
+<!--Styles-->
+<style>
+    /* Common table styles */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    /* Form style */
+    form {
+        margin-top: 10px;
+    }
+
+    /* Button style */
+    .btn {
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* Add specific styles here for #logout and #add */
+    #logout {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        margin: 20px 0;
+    }
+
+    #add input[type="submit"] {
+        padding: 8px 12px;
+        background-color: #008CBA;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+
+
+
+<!--Doctor-->
+<h2>{{title1}}</h2>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Phone Number</td>
+        <td>Password</td>
+        <td>Department Id</td>
+        <td>Department Name</td>
+    </tr>
+    {{#each Doctor}}
+    <form method="post">
+        <tr>
+            <td>{{doctor_id}}</td>
+            <td style="display: none"><input type="text" name="id" value={{doctor_id}}></td> 
+            <td><input type="text" name="name" value="{{name}}"></td> 
+            <td><input type="text" name="address" value="{{address}}"></td> 
+            <td><input type="text" name="phone_number" value="{{doctor_phone}}"></td> 
+            <td><input type="text" name="password" value="{{password}}"></td>
+            <td><input type="text" name="department_id" value="{{department_id}}"></td>
+            <td>{{department_name}}</td>
+            <td><input type="submit" value="Modify" formaction="/enter/edit/modify/doctor"></td>
+            <td><input type="submit" value="Delete" formaction="/enter/edit/delete/{{doctor_id}}/doctor"></td>
+        </tr>
+    </form>
+    {{/each}}
+</table>
+
+<form method="get" id="add">
+    <input type="submit" value="Add doctor" formaction="/enter/edit/insert/doctor">
+</form>
+
+<!--Nurse-->
+<h2>{{title2}}</h2>
+
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Phone Number</td>
+        <td>Password</td>
+        <td>Department Id</td>
+        <td>Department Name</td>
+    </tr>
+    {{#each Nurse}}
+    <form method="post">
+        <tr>
+            <td>{{nurse_id}}</td>
+            <td style="display: none"><input type="text" name="id" value={{nurse_id}}></td> 
+            <td><input type="text" name="name" value="{{name}}"></td> 
+            <td><input type="text" name="address" value="{{address}}"></td> 
+            <td><input type="text" name="phone_number" value="{{nurse_phone}}"></td> 
+            <td><input type="text" name="password" value="{{password}}"></td>
+            <td><input type="text" name="department_id" value="{{department_id}}"></td>
+            <td>{{department_name}}</td>
+            <td><input type="submit" value="Modify" formaction="/enter/edit/modify/nurse"></td>
+            <td><input type="submit" value="Delete" formaction="/enter/edit/delete/{{nurse_id}}/nurse"></td>
+        </tr>
+    </form>
+    {{/each}}
+</table>
+
+<form method="get" id="add">
+    <input type="submit" value="Add nurse" formaction="/enter/edit/insert/nurse">
+</form>
+
+<form id="logout" method="get" action='/logout'>
+        <button class='btn' type="submit">Logout</button>
+</form>

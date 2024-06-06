@@ -1,0 +1,73 @@
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .frame {
+        border-radius: 10px;
+        box-sizing: border-box;
+        border: 1px solid #cecece;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 350px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #id, #passwd, .btn {
+        font-size: 20px;
+    }
+    .pwd {
+        margin-top: 15px;
+    }
+    .btn {
+        width: 322px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background: none;
+        border: 1px solid #8e8e8e;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 15px;
+    }
+
+    .btn:hover{
+        background: #8e8e8e;
+        color: white;
+    }
+
+    input{
+        border: 1px solid #cecece;
+        border-radius: 10px;
+        padding: 10px 0;
+        padding-left: 15px;
+        width: 322px;
+    }
+
+    input:focus{
+        border: 1px solid #cecece;
+        outline: none;
+    }
+</style>
+
+<div class="frame">
+    <h1>Login</h1>
+    <form id="login" method="post" action='/'>
+        <div class="id">
+            <input id="id" name="id" type="text" required placeholder="Id">
+        </div>
+        <div class="pwd">
+            <input id="passwd" name='password' type="password" required  placeholder="Password">
+        </div>
+        <button class='btn' type="submit">Login</button>
+    </form>
+</div>
+

@@ -1,0 +1,67 @@
+<style>
+    form {
+        width: 340px;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+    }
+
+    div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    label {
+        width: 40%;
+        text-align: right;
+        margin-right: 10px;
+    }
+
+    input[type="text"],
+    select {
+        width: 55%;
+        height: 25px;
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+    #btn {
+        width: 100%;
+        margin-top: 15px;
+        padding: 8px;
+        border: none;
+        border-radius: 3px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+    #btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+
+<h1>Treatment</h1>
+    <form method="post" >
+        <div>
+            <label for="treatmentDetails">Treatment Details:</label>
+            <input type="text" name="treatmentDetails" placeholder="Treatment Details" id="treatmentDetails" required> 
+        </div>
+        <div>
+            <label for="treatmentDate">Treatment Date:</label>
+            <input type="text" name="treatmentDate" placeholder="Treatment Date" id="treatmentDate" required> 
+        </div>
+        <div>
+            <label for="patientId">Patient:</label>
+            <select name="patientId" id="patientId">
+            {{#each patients}}
+                <option value="{{patient_id}}">{{patient_id}} - {{name}}</option>
+            {{/each}}
+            </select>
+        </div>
+        <input type="submit" formaction="/enter/edit/insert/doctor" id="btn">
+    </form>
